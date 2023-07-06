@@ -6,7 +6,7 @@ client = commands.Bot(command_prefix="!", intents=discord.Intents.all())
 
 
 class CustomPlayer(wavelink.Player):
-
+#sets up the queue function 
     def __init__(self):
         super().__init__()
         self.queue = wavelink.Queue()
@@ -28,31 +28,12 @@ async def connect_nodes(): # helper function
     wavelink.Player.auto_queue=True
     await client.change_presence(status=discord.Status.idle,activity=discord.Activity(type = discord.ActivityType.listening, name = "\help" ))
 
-# events
-
-# @client.event
-# async def on_wavelink_node_ready(node: wavelink.Node):
-    
-#     print(f'Node: {node.id} is ready!')
-
-# @client.event
-# async def on_wavelink_track_end(player:wavelink.Player,track:wavelink.tracks, reason):
-#     ctx = player.ctx
-#     vc: player = ctx.voice_client
-
-#     if vc.loop():
-#         return await vc.play(track)
-#     else:
-#         next_song = vc.queue.get()
-#         await vc.play(next_song)
-#         await ctx.send(f"Now Playing {next_song.title}")
-
 
 embedred = "#FF0000"
 
 # commands
 
-
+#join command
 @client.command(name="connect",aliases = ["join","summon"])
 async def connect(ctx):
     vc = ctx.voice_client # represents a discord voice connection
@@ -69,7 +50,7 @@ async def connect(ctx):
     else:
         await ctx.send("The bot is already connected to a voice channel")
 
-
+#disconnect command
 @client.command(name="disconnect",aliases = ["leave"])
 async def disconnect(ctx):
     vc = ctx.voice_client
@@ -82,7 +63,7 @@ async def disconnect(ctx):
     else:
         await ctx.send("The bot is not connected to a voice channel.")
 
-
+#play command
 @client.command()
 async def play(ctx, *, search: wavelink.YouTubeTrack):
     vc = ctx.voice_client
@@ -103,7 +84,7 @@ async def play(ctx, *, search: wavelink.YouTubeTrack):
         mbed.set_thumbnail(url=f"{search.thumbnail}")
         return await ctx.send(embed=mbed)
         
-
+#skip command
 @client.command()
 async def skip(ctx):
     vc = ctx.voice_client
@@ -120,7 +101,7 @@ async def skip(ctx):
     else:
         await ctx.send("The bot is not connected to a voice channel.")
 
-
+#pause command
 @client.command(name='pause' , aliases = ['p','PAUSE'])
 async def pause(ctx):
     vc = ctx.voice_client
@@ -134,7 +115,7 @@ async def pause(ctx):
     else:
         await ctx.send("The bot is not connected to a voice channel")
 
-
+#resume command
 @client.command(name = "resume" , aliases = ['r','RESUME','Play'])
 async def resume(ctx):
     vc = ctx.voice_client
@@ -148,7 +129,7 @@ async def resume(ctx):
     else:
         await ctx.send("The bot is not connected to a voice channel")    
          
-
+#stop command
 @client.command()
 async def stop(ctx):
     vc = ctx.voice_client
@@ -173,4 +154,4 @@ async def play_error(ctx, error):
         await ctx.send("Please join a voice channel.")
 
 
-client.run("MTExMzA3ODM2NzA5MzI3MjU5Ng.G7VRRe.DB6-Gj-CdmSXzQGuNK_mPekRWcUAPS6mHjLgKs")
+client.run("Your Token here")

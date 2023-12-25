@@ -1,0 +1,10 @@
+__pycache__
+.vscode
+build
+dist
+Lavalink
+logs
+config.py
+discloud.config
+mainbot.spec
+Lavalink.jar

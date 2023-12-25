@@ -28,8 +28,8 @@ async def on_ready():
 async def connect_nodes(): # helper function
     await client.wait_until_ready()
     sc = spotify.SpotifyClient(
-            client_id='6d618041072b4ffb85739332f857cdb3',
-            client_secret='482428543a2d4a2fab3484db9322ca25',
+            client_id='',
+            client_secret='',
         )
     # node: wavelink.Node = wavelink.Node(uri='lavalink.devamop.in', password='DevamOP')
     node: wavelink.Node = wavelink.Node(uri='http://localhost:2333/', password='youshallnotpass')
